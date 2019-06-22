@@ -9,6 +9,6 @@ ap.add_argument("--second", type=str, required= True)
 args = ap.parse_args()
 print(args.name)
 
-print("bla bla {} second {}".format(args.name, args.second))
+print(f"bla bla {args.name} second {args.second}")
 
 

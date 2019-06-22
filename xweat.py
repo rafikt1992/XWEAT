@@ -14,7 +14,6 @@ import math
 from sklearn.metrics.pairwise import euclidean_distances
 
 
-
 class XWEAT(object):
   """
   Perform WEAT (Word Embedding Association Test) bias tests on a language model.

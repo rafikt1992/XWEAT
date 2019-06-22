@@ -76,7 +76,7 @@ class XWEAT(object):
         eucl = 1 / (1 + distances)
         return eucl
 
-    def csls(self, a, b, k=10):
+    def csls(self, a, b, k=10):  #another similarity measurment
         norm_a = self.mat_normalize(a)
         norm_b = self.mat_normalize(b)
         sims_local_a = np.dot(norm_a, np.transpose(norm_a))
