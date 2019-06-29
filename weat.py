@@ -30,9 +30,9 @@ class XWEAT(object):
     def set_embd_dict(self, embd_dict):
         self.embd_dict = embd_dict
 
-    def _build_vocab_dict(self, vocab):
+    def _build_vocab_dict(self, vocab): #we look for every word in our vocab and we check if they have embeddings output is term as a key and index as value
         self.vocab = OrderedDict()
-        vocab = set(vocab)
+        vocab = set(vocab) ##todo: remove duplicates without shuffleing
         index = 0
         for term in vocab:
             if term in self.embd_dict:
@@ -41,7 +41,7 @@ class XWEAT(object):
             else:
                 logging.warning("Not in vocab %s", term)
 
-    def convert_by_vocab(self, items):
+    def convert_by_vocab(self, items): #givin a list (T1) we convert the list from (boy, man, etc ) to (1 , 2 ,3 )
         """Converts a sequence of [tokens|ids] using the vocab."""
         output = []
         for item in items:
@@ -51,7 +51,7 @@ class XWEAT(object):
                 continue
         return output
 
-    def _build_embedding_matrix(self):
+    def _build_embedding_matrix(self): #we through everything we dont need away
         self.embedding_matrix = []
         for term, index in self.vocab.items():
             if term in self.embd_dict:
@@ -367,7 +367,7 @@ class XWEAT(object):
         p = self.weat_p_value_precomputed_sims(T1, T2, A1, A2, sample=sample_p)
         return test_statistic, effect_size, p
 
-    def _create_vocab(self):
+    def _create_vocab(self):  #we dont need it
         """
     >>> weat = XWEAT(None); weat._create_vocab()
     :return: all
@@ -464,7 +464,7 @@ class XWEAT(object):
             return len(translation_dict)
 
 
-def load_vocab_goran(path):
+def load_vocab_goran(path):  #load pickle files
     return pickle.load(open(path, "rb"))
 
 
@@ -472,7 +472,7 @@ def load_vectors_goran(path):
     return np.load(path)
 
 
-def load_embedding_dict(vocab_path="", vector_path="", embeddings_path="", glove=False, postspec=False):
+def load_embedding_dict(vocab_path="", vector_path="", embeddings_path="", glove=False, postspec=False) #i can ignore)
     """
   >>> _load_embedding_dict()
   :param vocab_path:
