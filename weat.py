@@ -32,7 +32,8 @@ class XWEAT(object):
 
     def _build_vocab_dict(self, vocab): #we look for every word in our vocab and we check if they have embeddings output is term as a key and index as value
         self.vocab = OrderedDict()
-        vocab = set(vocab) ##todo: remove duplicates without shuffleing
+        #vocab = set(vocab) ##todo: remove duplicates without shuffleing
+        vocab = list(dict.fromkeys(vocab))
         index = 0
         for term in vocab:
             if term in self.embd_dict:
@@ -472,7 +473,7 @@ def load_vectors_goran(path):
     return np.load(path)
 
 
-def load_embedding_dict(vocab_path="", vector_path="", embeddings_path="", glove=False, postspec=False) #i can ignore)
+def load_embedding_dict(vocab_path="", vector_path="", embeddings_path="", glove=False, postspec=False): #i can ignore
     """
   >>> _load_embedding_dict()
   :param vocab_path:
