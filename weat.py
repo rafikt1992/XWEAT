@@ -581,7 +581,7 @@ def main():
     parser.add_argument("--test_number", type=int, help="Number of the weat test to run", required=False)
     parser.add_argument("--permutation_number", type=int, default=None,
                         help="Number of permutations (otherwise all will be run)", required=False)
-    parser.add_argument("--output_file", type=str, default=None, help="File to store the results)", required=False)
+    parser.add_argument("--output_file", type=str, default=None, help="File to store the results)", required=True)
     parser.add_argument("--lower", type=boolean_string, default=False, help="Whether to lower the vocab", required=True)
     parser.add_argument("--similarity_type", type=str, default="cosine", help="Which similarity function to use",
                         required=False)
@@ -666,6 +666,7 @@ def main():
         end = time.time()
         duration_in_hours = ((end - start) / 60) / 60
         f.write(str(duration_in_hours))
+
         f.close()
 
 
