@@ -32,7 +32,7 @@ class XWEAT(object):
 
     def _build_vocab_dict(self, vocab): #we look for every word in our vocab and we check if they have embeddings output is term as a key and index as value
         self.vocab = OrderedDict()
-        #vocab = set(vocab) ##todo: remove duplicates without shuffleing
+        #vocab = set(vocab) this cause shuffling
         vocab = list(dict.fromkeys(vocab))
         index = 0
         for term in vocab:
@@ -497,9 +497,14 @@ def load_embedding_dict(vocab_path="", vector_path="", embeddings_path="", glove
         assert ("test" in embd_dict)
         assert ("house" in embd_dict)
         return embd_dict
+    elif embeddings_path == "pickleTrue":  # todo: add load from pickle file
+        with open('data/embbedding_dict.p', 'rb') as handle:
+            embd_dict = pickle.load(handle)
+            return embd_dict
     elif embeddings_path != "":
         embd_dict = utils.load_embeddings(embeddings_path, word2vec=False)
         return embd_dict
+
     else:
         embd_dict = {}
         vocab = load_vocab_goran(vocab_path)
@@ -586,7 +591,7 @@ def main():
     parser.add_argument("--similarity_type", type=str, default="cosine", help="Which similarity function to use",
                         required=False)
     parser.add_argument("--embedding_vocab", type=str, help="Vocab of the embeddings")
-    parser.add_argument("--embedding_vectors", type=str, help="Vectors of the embeddings")
+    parser.add_argument("--embedding_vectors", type=str, help="Vectors of the embeddings, use pickleTrue as a path to load from a pickle, name your pickle file embedding_dict.py and add it to data folder")
     parser.add_argument("--use_glove", type=boolean_string, default=False, help="Use glove")
     parser.add_argument("--postspec", type=boolean_string, default=False, help="Use postspecialized fasttext")
     parser.add_argument("--is_vec_format", type=boolean_string, default=False,
