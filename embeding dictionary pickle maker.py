@@ -37,15 +37,4 @@ with open("data/embbedding_dict.p", 'wb') as handle:
 with open('data/embbedding_dict.p', 'rb') as handle:
     b = pickle.load(handle)
 
-
-
 print (embeding_dict == b)
-'''
-a = {'hello': 'world'}
-
-with open('filename.pickle', 'wb') as handle:
-    pickle.dump(a, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
-with open('filename.pickle', 'rb') as handle:
-    b = pickle.load(handle)
-    '''

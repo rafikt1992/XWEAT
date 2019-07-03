@@ -11,7 +11,7 @@ print(args.name)
 
 print(f"bla bla {args.name} second {args.second}")
 '''
-
+'''
 loglist= []
 
 listofwords= ["word1","word2","word3","word4","word5", ]
@@ -22,5 +22,13 @@ for i in listofwords:
 
 with codecs.open("temp delet me", "w") as f:
     f.write("\n".join(loglist))
+'''
 
+warningsstings = []
 
+warningsstings.append("nana")
+warningsstings.append("mumu")
+
+print(teststring)
+
+file.writelines(["%s\n" % item  for item in warningsstings])

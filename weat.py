@@ -21,7 +21,7 @@ class XWEAT(object):
 
   Credits: Basic implementation based on https://gist.github.com/SandyRogers/e5c2e938502a75dcae25216e4fae2da5
   """
-
+    warningsstings = []
     def __init__(self):
         self.embd_dict = None
         self.vocab = None
@@ -665,6 +665,7 @@ def main():
         f.write(str(args.test_number) + " and ")
         f.write(str(args.lower) + " and ")
         f.write(str(args.permutation_number) + "\n")
+        #f.writelines(["%s\n" % item  for item in warningsstings])
         f.write("Result: ")
         f.write(str(result))
         f.write("\n")
