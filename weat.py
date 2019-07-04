@@ -13,6 +13,8 @@ from collections import OrderedDict
 import math
 from sklearn.metrics.pairwise import euclidean_distances
 
+listofwarnings =[]
+
 
 class XWEAT(object):
     """
@@ -21,7 +23,7 @@ class XWEAT(object):
 
   Credits: Basic implementation based on https://gist.github.com/SandyRogers/e5c2e938502a75dcae25216e4fae2da5
   """
-    warningsstings = []
+
     def __init__(self):
         self.embd_dict = None
         self.vocab = None
@@ -29,6 +31,7 @@ class XWEAT(object):
 
     def set_embd_dict(self, embd_dict):
         self.embd_dict = embd_dict
+
 
     def _build_vocab_dict(self, vocab): #we look for every word in our vocab and we check if they have embeddings output is term as a key and index as value
         self.vocab = OrderedDict()
@@ -41,6 +44,10 @@ class XWEAT(object):
                 index += 1
             else:
                 logging.warning("Not in vocab %s", term)
+                listofwarnings.append(term)
+
+
+
 
     def convert_by_vocab(self, items): #givin a list (T1) we convert the list from (boy, man, etc ) to (1 , 2 ,3 )
         """Converts a sequence of [tokens|ids] using the vocab."""
@@ -575,12 +582,13 @@ def compute_oov_percentage():
             f.write("\n")
     f.close()
 
-
 def main():
     def boolean_string(s):
         if s not in {'False', 'True', 'false', 'true'}:
             raise ValueError('Not a valid boolean string')
         return s == 'True' or s == 'true'
+
+
 
     parser = argparse.ArgumentParser(description="Running XWEAT")
     parser.add_argument("--test_number", type=int, help="Number of the weat test to run", required=False)
@@ -659,20 +667,21 @@ def main():
     logging.info("Running test")
     result = weat.run_test_precomputed_sims(targets_1, targets_2, attributes_1, attributes_2, args.permutation_number,
                                             args.similarity_type)
+    logging.basicConfig(filename=args.output_file, filemode='a', level=logging.warning)
+
     logging.info(result)
     with codecs.open(args.output_file, "w", "utf8") as f: ##Todo: add loggin info to the log file file
         f.write("Config: ")
         f.write(str(args.test_number) + " and ")
         f.write(str(args.lower) + " and ")
         f.write(str(args.permutation_number) + "\n")
-        #f.writelines(["%s\n" % item  for item in warningsstings])
+        f.writelines(["%s\n" % item for item in listofwarnings])
         f.write("Result: ")
         f.write(str(result))
         f.write("\n")
         end = time.time()
         duration_in_hours = ((end - start) / 60) / 60
         f.write(str(duration_in_hours))
-
         f.close()
 
 

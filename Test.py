@@ -1,5 +1,7 @@
+import weat
 import argparse
 import codecs
+import logging
 '''
 ap = argparse.ArgumentParser(description='Convert Hex Files')
 ap.add_argument("--name", help="name of the user", type=str, required=True)
@@ -23,12 +25,14 @@ for i in listofwords:
 with codecs.open("temp delet me", "w") as f:
     f.write("\n".join(loglist))
 '''
+a= "reafik "
 
-warningsstings = []
+logging.warning("not in vocab %s", a)
 
-warningsstings.append("nana")
-warningsstings.append("mumu")
+print(logging.warning)
 
-print(teststring)
+aaaaaa = XWEAT(obect)
 
-file.writelines(["%s\n" % item  for item in warningsstings])
+file.writelines(["%s\n" % item  for item in list])
+
+listofwarnings
