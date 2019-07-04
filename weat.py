@@ -505,7 +505,7 @@ def load_embedding_dict(vocab_path="", vector_path="", embeddings_path="", glove
         assert ("house" in embd_dict)
         return embd_dict
     elif embeddings_path == "pickleTrue":  # todo: add load from pickle file
-        with open('data/embbedding_dict.p', 'rb') as handle:
+        with open('./data/embbedding_dict.p', 'rb') as handle:
             embd_dict = pickle.load(handle)
             return embd_dict
     elif embeddings_path != "":
