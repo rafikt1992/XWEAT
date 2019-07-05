@@ -1,4 +1,4 @@
-import cupy as np
+import numpy as np
 import random
 from itertools import filterfalse
 from itertools import combinations
@@ -642,7 +642,7 @@ def main():
 
     if args.lang != "en":
         logging.info("Translating terms from en to %s", args.lang)
-        translation_dict = load_vocab_goran("./data/vocab_dict_en_" + args.lang + ".p")
+        translation_dict = load_vocab_goran("/content/gdrive/My Drive/XWEAT/data/vocab_dict_en_" + args.lang + ".p")
         targets_1 = translate(translation_dict, targets_1)
         targets_2 = translate(translation_dict, targets_2)
         attributes_1 = translate(translation_dict, attributes_1)
