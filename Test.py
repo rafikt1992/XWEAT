@@ -36,3 +36,10 @@ aaaaaa = XWEAT(obect)
 file.writelines(["%s\n" % item  for item in list])
 
 listofwarnings
+
+#with open('./data/embbedding_dict.p', 'rb') as handle:
+
+elif embeddings_path.endswith("p"):  # todo: add load from pickle file
+with open('./data/embbedding_dict.p', 'rb') as handle:
+    embd_dict = pickle.load(handle)
+    return embd_dict
