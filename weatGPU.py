@@ -672,7 +672,6 @@ def main():
     logging.info("Running test")
     result = weat.run_test_precomputed_sims(targets_1, targets_2, attributes_1, attributes_2, args.permutation_number,
                                             args.similarity_type)
-    logging.basicConfig(filename=args.output_file, filemode='a', level=logging.warning)
 
     logging.info(result)
     with codecs.open(args.output_file, "w", "utf8") as f: ##Todo: add loggin info to the log file file
