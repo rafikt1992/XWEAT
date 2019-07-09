@@ -508,11 +508,6 @@ def load_embedding_dict(vocab_path="", vector_path="", embeddings_path="", glove
         with open(embeddings_path, 'rb') as handle:
             embd_dict = pickle.load(handle)
             return embd_dict
-
-    # elif embeddings_path == "pickleTrue":  # todo: add load from pickle file
-    #     with open('./data/embbedding_dict.p', 'rb') as handle:
-    #         embd_dict = pickle.load(handle)
-            return embd_dict
     elif embeddings_path != "":
         embd_dict = utils.load_embeddings(embeddings_path, word2vec=False)
         return embd_dict
@@ -674,12 +669,12 @@ def main():
                                             args.similarity_type)
 
     logging.info(result)
-    with codecs.open(args.output_file, "w", "utf8") as f: ##Todo: add loggin info to the log file file
+    with codecs.open(args.output_file, "w", "utf8") as f:
         f.write("Config: ")
         f.write(str(args.test_number) + " and ")
         f.write(str(args.lower) + " and ")
         f.write(str(args.permutation_number) + "\n")
-        f.writelines(["%s\n" % item for item in listofwarnings])
+        f.writelines(["%s\n" % item for item in listofwarnings]) #adds missing words to the log file
         f.write("Result: ")
         f.write(str(result))
         f.write("\n")
