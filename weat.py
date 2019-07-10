@@ -448,7 +448,7 @@ class XWEAT(object):
     >>> XWEAT()._parse_translations(is_russian=False)
     293
     """
-        # This code probably does not work for the russian code, as dmitry did use other columns for his corrections
+    # This code probably does not work for the russian code, as dmitry did use other columns for his corrections
         with codecs.open(path, "r", "utf8") as f:
             translation_dict = {}
             for line in f.readlines():
@@ -635,13 +635,16 @@ def main():
     else:
         raise ValueError("Only WEAT 1 to 10 are supported")
 
-    if args.lang != "en":
+    if args.lang != "en" and args.lang != "ar":
         logging.info("Translating terms from en to %s", args.lang)
         translation_dict = load_vocab_goran("./data/vocab_dict_en_" + args.lang + ".p")
         targets_1 = translate(translation_dict, targets_1)
         targets_2 = translate(translation_dict, targets_2)
         attributes_1 = translate(translation_dict, attributes_1)
         attributes_2 = translate(translation_dict, attributes_2)
+    if args.lang == "ar":
+        pass
+
 
     if args.lower:
         targets_1 = [t.lower() for t in targets_1]
