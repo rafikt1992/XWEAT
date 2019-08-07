@@ -1,4 +1,4 @@
-import  codecs
+import codecs
 import pickle
 
 
@@ -30,11 +30,11 @@ def load_embeddings(path, word2vec=False, rdf2vec=False):
         return model
 
 
-embeding_dict = load_embeddings("data/Aravec_cbow_300_twitter(short).txt",word2vec=False, rdf2vec=False) #change the path here
-with open("data/embbedding_dictAraVec.p", 'wb') as handle:
+embeding_dict = load_embeddings("data/cc.ar.300(short).vec",word2vec=False, rdf2vec=False) #change the path here
+with open("data/cc.ar.300(short).vec.p", 'wb') as handle:
     pickle.dump(embeding_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('data/embbedding_dictAraVec.p', 'rb') as handle:
+with open('data/cc.ar.300(short).vec.p', 'rb') as handle:
     b = pickle.load(handle)
 
-print (embeding_dict == b)
+print(embeding_dict == b)
