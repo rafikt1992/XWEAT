@@ -635,7 +635,7 @@ def main():
     else:
         raise ValueError("Only WEAT 1 to 10 are supported")
 
-    if args.lang != "en"
+    if args.lang != "en":
         logging.info("Translating terms from en to %s", args.lang)
         translation_dict = load_vocab_goran("./data/vocab_dict_en_" + args.lang + ".p")
         targets_1 = translate(translation_dict, targets_1)
