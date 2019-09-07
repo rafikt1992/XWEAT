@@ -51,17 +51,17 @@ with codecs.open('data/vocab_en_ar.csv', "r", "utf8") as f:
     else:
       if is_russian and parts[3] != "\n" and parts[3] != "\r\n" and parts[3] != "\r":
           other_m = parts[2]
-          other_m = clean_arabic_str(other_m)#.replace(" ", "_")
+          other_m = clean_arabic_str(other_m).replace(" ", "_")
           other_f = parts[3].strip()
-          other_f = clean_arabic_str(other_f)#.replace(" ", "_") # clean text
+          other_f = clean_arabic_str(other_f).replace(" ", "_") # clean text
           translation_dict[en] = (other_m, other_f)
       else:
         other_m = parts[1].strip()
-        other_m = clean_arabic_str(other_m)#.replace(" ", "_")
+        other_m = clean_arabic_str(other_m).replace(" ", "_")
         other_f = None
         if len(parts) > 2 and parts[2] != "\n" and parts[2] != "\r\n" and parts[2] != "\r" and parts[2] != '':
             other_f = parts[2].strip()
-            other_f = clean_arabic_str(other_f)#.replace(" ", "_")
+            other_f = clean_arabic_str(other_f).replace(" ", "_")
         translation_dict[en] = (other_m, other_f)
   pickle.dump(translation_dict, open("data/vocab_dict_en_ar.p", "wb"))
 

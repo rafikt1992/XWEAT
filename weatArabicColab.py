@@ -22,9 +22,6 @@ class XWEAT(object):
   Follows from Caliskan et al 2017 (10.1126/science.aal4230).
 
   Credits: Basic implementation based on https://gist.github.com/SandyRogers/e5c2e938502a75dcae25216e4fae2da5
-
-  this version take into consideration relative paths in google colab, edited method load goran vocab in the main function
-  lang!=en
   """
 
     def __init__(self):
@@ -511,6 +508,11 @@ def load_embedding_dict(vocab_path="", vector_path="", embeddings_path="", glove
         with open(embeddings_path, 'rb') as handle:
             embd_dict = pickle.load(handle)
             return embd_dict
+
+    # elif embeddings_path == "pickleTrue":  # todo: add load from pickle file
+    #     with open('./data/embbedding_dict.p', 'rb') as handle:
+    #         embd_dict = pickle.load(handle)
+            return embd_dict
     elif embeddings_path != "":
         embd_dict = utils.load_embeddings(embeddings_path, word2vec=False)
         return embd_dict
@@ -646,7 +648,6 @@ def main():
         attributes_1 = translate(translation_dict, attributes_1)
         attributes_2 = translate(translation_dict, attributes_2)
 
-
     if args.lower:
         targets_1 = [t.lower() for t in targets_1]
         targets_2 = [t.lower() for t in targets_2]
@@ -671,9 +672,10 @@ def main():
     logging.info("Running test %s", args.test_number)
     result = weat.run_test_precomputed_sims(targets_1, targets_2, attributes_1, attributes_2, args.permutation_number,
                                             args.similarity_type)
+    logging.basicConfig(filename=args.output_file, filemode='a', level=logging.warning)
 
     logging.info(result)
-    with codecs.open(args.output_file, "w", "utf8") as f:
+    with codecs.open(args.output_file, "w", "utf8") as f: ##Todo: add loggin info to the log file file
         f.write("Config: ")
         f.write(str(args.test_number) + " and ")
         f.write(str(args.lower) + " and ")
@@ -689,4 +691,3 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
