@@ -556,7 +556,7 @@ def compute_oov_percentage():
             for language in ["en", "es", "de", "tr", "ru", "hr", "it"]:
                 if language != "en":
                     # f.write("Translating terms from en to %s\n" % language)
-                    translation_dict = load_vocab_goran("./data/vocab_dict_en_" + language + ".p")
+                    translation_dict = load_vocab_goran("data/vocab_dict_en_" + language + ".p") #todo: add "." before /data
                     vocab_translated = translate(translation_dict, vocab)
                     vocab_translated = [t.lower() for t in vocab_translated]
                     # f.write("Translated terms %s\n" % str(vocab))
@@ -637,7 +637,7 @@ def main():
 
     if args.lang != "en":
         logging.info("Translating terms from en to %s", args.lang)
-        translation_dict = load_vocab_goran("./data/vocab_dict_en_" + args.lang + ".p")
+        translation_dict = load_vocab_goran("/home/rtakiedd/projects/XWEAT/data/vocab_dict_en_" + args.lang + ".p") #todo: change back to ./data
         targets_1 = translate(translation_dict, targets_1)
         targets_2 = translate(translation_dict, targets_2)
         attributes_1 = translate(translation_dict, attributes_1)
