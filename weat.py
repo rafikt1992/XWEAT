@@ -352,6 +352,7 @@ class XWEAT(object):
         total_possible_permutations = math.factorial(len(T1_T2)) / math.factorial(size_of_permutation) / math.factorial(
             (len(T1_T2) - size_of_permutation))
         logging.info("Number of possible permutations: %d", total_possible_permutations)
+        listofwarnings.append(total_possible_permutations)
         if not sample or sample >= total_possible_permutations:
             permutations = combinations(T1_T2, size_of_permutation)
         else:
