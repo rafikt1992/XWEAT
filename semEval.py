@@ -1,6 +1,8 @@
 import codecs
 import re
 import  numpy as np
+from scipy import spatial
+from scipy.stats.stats import pearsonr
 
 def load_embedding(path):
     embbedding_dict = {}
@@ -49,39 +51,51 @@ def clean_arabic_str(text):
 
     return text
 
+def semEval(embedding_path, output_path):
+    pass
 
 embedding_dict = load_embedding("C:/Users/D071082/PycharmProjects/XWEAT/data/vec/ara_news_2008_1M-sentencesCleaned.txt.vec")
-sum_embedding = 0.0
-sts_1_score = 0.0
-sts_2_score = 0.0
+result = []
+gold_standard = []
+
+with open ("data/STS.gs.track1.ar-ar.txt" , "r") as sts_results:
+    for line in sts_results:
+        result.append(line)
+
 with codecs.open('data/STS.input.track1.ar-ar.txt', 'r', "utf-8") as input:
     for line in input:
         line = line.strip().split("\t")
         sts_1 = line[0].replace(".","").split(" ")
         sts_2 = line[1].replace(".", "").split(" ")
         print(sts_1, "\n" ,sts_2)
+        sum_embedding_1 = 0.0
+        sum_embedding_2 = 0.0
+        sts_1_score = 0.0
+        sts_2_score = 0.0
 
         for token in sts_1:
             token = clean_arabic_str(token).replace(" ", "_")
             try:
+                embedding_dict[token]
                 word_embedding = np.array(embedding_dict[token])
-                sum_embedding = np.add(sum_embedding,word_embedding)
-                sts_1_score = sum_embedding / len(sts_1)
-            except Exception as e:
+                sum_embedding_1 = np.add(sum_embedding_1,word_embedding)
+            except KeyError as e:
                 print("not found:" + token)
-        sum_embedding = 0.0
+        sts_1_score = np.divide(sum_embedding_1,len(sts_1))
         for token in sts_2:
             token = clean_arabic_str(token).replace(" ", "_")
             try:
+                embedding_dict[token]
                 word_embedding = np.array(embedding_dict[token])
-                sum_embedding = np.add(sum_embedding, word_embedding)
-                sts_2_score = sum_embedding / len(sts_2)
-            except Exception as m:
+                sum_embedding_2 = np.add(sum_embedding_2, word_embedding)
+            except KeyError as e:
                 print("not found:" + token)
+        sts_2_score = np.divide(sum_embedding_2, len(sts_2))
+        result.append(1 - spatial.distance.cosine(sts_1_score,sts_2_score))
 
-        break
 
-print(sum_embedding)
-print(sts_1_score)
+print(result)
+print(len(result))
+print(pearsonr(gold_standard,result))
 
 
