@@ -2,7 +2,14 @@ import codecs
 import re
 import  numpy as np
 from scipy import spatial
-from scipy.stats.stats import pearsonr
+import os
+from joblib import Parallel, delayed
+import multiprocessing
+
+from sklearn.metrics import r2_score
+
+file_list = os.listdir('data/vec')
+embedding_path = "data/vec/ara_news_2008_1M-sentencesCleaned.txt.vec"
 
 def load_embedding(path):
     embbedding_dict = {}
@@ -16,8 +23,8 @@ def load_embedding(path):
             except Exception as e:
                 print(line)
                 continue
-    return embbedding_dict
-''
+    return embbedding_dict #
+
 def clean_arabic_str(text):
     '''
     this method clean strings of arabic, remove tashkeel, and replace double letters and unify ta2 marbuta and ha2
@@ -51,51 +58,80 @@ def clean_arabic_str(text):
 
     return text
 
-def semEval(embedding_path, output_path):
-    pass
+def semEval(embedding_path,output):
 
-embedding_dict = load_embedding("C:/Users/D071082/PycharmProjects/XWEAT/data/vec/ara_news_2008_1M-sentencesCleaned.txt.vec")
-result = []
-gold_standard = []
+    ''':parameter embedding_path
+    :return correlation, print results to a file
 
-with open ("data/STS.gs.track1.ar-ar.txt" , "r") as sts_results:
-    for line in sts_results:
-        result.append(line)
-
-with codecs.open('data/STS.input.track1.ar-ar.txt', 'r', "utf-8") as input:
-    for line in input:
-        line = line.strip().split("\t")
-        sts_1 = line[0].replace(".","").split(" ")
-        sts_2 = line[1].replace(".", "").split(" ")
-        print(sts_1, "\n" ,sts_2)
-        sum_embedding_1 = 0.0
-        sum_embedding_2 = 0.0
-        sts_1_score = 0.0
-        sts_2_score = 0.0
-
-        for token in sts_1:
-            token = clean_arabic_str(token).replace(" ", "_")
-            try:
-                embedding_dict[token]
-                word_embedding = np.array(embedding_dict[token])
-                sum_embedding_1 = np.add(sum_embedding_1,word_embedding)
-            except KeyError as e:
-                print("not found:" + token)
-        sts_1_score = np.divide(sum_embedding_1,len(sts_1))
-        for token in sts_2:
-            token = clean_arabic_str(token).replace(" ", "_")
-            try:
-                embedding_dict[token]
-                word_embedding = np.array(embedding_dict[token])
-                sum_embedding_2 = np.add(sum_embedding_2, word_embedding)
-            except KeyError as e:
-                print("not found:" + token)
-        sts_2_score = np.divide(sum_embedding_2, len(sts_2))
-        result.append(1 - spatial.distance.cosine(sts_1_score,sts_2_score))
+    '''
 
 
-print(result)
-print(len(result))
-print(pearsonr(gold_standard,result))
+    embedding_dict = load_embedding(embedding_path)
+    result = []
+    gold_standard = []
 
+    with open("data/STS.gs.track1.ar-ar.txt" , "r") as sts_results:
+        for line in sts_results:
+            line= line.strip()
+            gold_standard.append(float(line))
 
+    with codecs.open('data/STS.input.track1.ar-ar.txt', 'r', "utf-8") as input: #load track test
+        for index, line in enumerate(input):
+            line = line.strip().split("\t") #split into two sentences
+            #sts_1 = line[0].replace(".","").split(" ")
+            #sts_2 = line[1].replace(".", "").split(" ")
+            sts_1 = line[0].split(" ") # create array with words from sentence one
+            sts_2 = line[1].split(" ") # create array with words from sentence one
+            print(index ,"\n",sts_1, "\n" ,sts_2)
+            sum_embedding_1 = 0.0
+            sum_embedding_2 = 0.0
+            sts_1_score = 0.0
+            sts_2_score = 0.0
+
+            for token in sts_1:
+                token = clean_arabic_str(token).replace(" ", "_") #clean the token to match the training format
+                token = token.replace(".", "")
+                try:
+                    embedding_dict[token]
+                    word_embedding = np.array(embedding_dict[token])
+                    sum_embedding_1 = np.add(sum_embedding_1,word_embedding) # add the word vector to the sentence vector
+                except KeyError as e:
+                    print("not found:" + token)
+            sts_1_score = np.divide(sum_embedding_1,len(sts_1))  #devide the embeding by the number of tokens (averag)
+            for token in sts_2:
+                token = clean_arabic_str(token).replace(" ", "_")
+                try:
+                    embedding_dict[token]
+                    word_embedding = np.array(embedding_dict[token])
+                    sum_embedding_2 = np.add(sum_embedding_2, word_embedding)  # same as above
+                except KeyError as e:
+                    print("not found:" + token)
+            sts_2_score = np.divide(sum_embedding_2, len(sts_2))
+            result.append(float(1 - spatial.distance.cosine(sts_1_score,sts_2_score)))
+            #result = [result.append(float(i)) for i in result]
+        index_missing_elements = np.argwhere(np.isnan(result))
+        for a in index_missing_elements:
+            print(int(a))
+            del result[int(a)]  # there is a sentance causing nan value, so i deleted it
+            del gold_standard[int(a)]  #delete the missing from the gold standard
+
+    # print(gold_standard)
+    # print(result)
+    # print(len(result))
+    # print(len(gold_standard))
+    result = np.array(result)
+    gold_standard = np.array(gold_standard)
+    print(np.argwhere(np.isnan(result)))
+
+    #print(r2_score(gold_standard, result))
+    correlation = np.corrcoef(gold_standard, result)  #
+    #print(correlation)
+
+    #np.savetxt("eval/"+embedding_path+"Eval",correlation)
+    np.savetxt("eval/"+output+"Eval",correlation,fmt='%.18e',header="")
+    return correlation
+#for file_name in file_list:
+ #   semEval("data/vec/"+file_name,file_name)
+num_cores = multiprocessing.cpu_count()
+
+Parallel(n_jobs=num_cores)(delayed(semEval)("data/vec/"+file_name,file_name) for file_name in file_list) #for the server
