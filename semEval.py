@@ -94,20 +94,22 @@ def semEval(embedding_path,output):
                 try:
                     embedding_dict[token]
                     word_embedding = np.array(embedding_dict[token])
+                    word_embedding = np.divide(word_embedding, len(sts_1)) #normalizing the word embedding by the length of the sentence
                     sum_embedding_1 = np.add(sum_embedding_1,word_embedding) # add the word vector to the sentence vector
                 except KeyError as e:
                     print("not found:" + token)
-            sts_1_score = np.divide(sum_embedding_1,len(sts_1))  #devide the embeding by the number of tokens (averag)
+                    #sts_1_score = np.divide(sum_embedding_2, len(sts_2))  # not needed anymore
             for token in sts_2:
                 token = clean_arabic_str(token).replace(" ", "_")
                 try:
                     embedding_dict[token]
                     word_embedding = np.array(embedding_dict[token])
+                    word_embedding = np.divide(word_embedding,len(sts_2))
                     sum_embedding_2 = np.add(sum_embedding_2, word_embedding)  # same as above
                 except KeyError as e:
                     print("not found:" + token)
-            sts_2_score = np.divide(sum_embedding_2, len(sts_2))
-            result.append(float(1 - spatial.distance.cosine(sts_1_score,sts_2_score)))
+                    #sts_2_score = np.divide(sum_embedding_2, len(sts_2)) #not needed anymore
+            result.append(float(1 - spatial.distance.cosine(sum_embedding_1, sum_embedding_2)))
             #result = [result.append(float(i)) for i in result]
         index_missing_elements = np.argwhere(np.isnan(result))
         for a in index_missing_elements:
