@@ -2,7 +2,7 @@ import pickle
 import codecs
 
 lang = "ar"
-output_file =  codecs.open("WEAT_Arabic_list" ,"w", "utf-8")
+output_file =  codecs.open("WEAT_Arabic_listLatex" ,"w", "utf-8")
 
 
 def weat_1():
@@ -217,20 +217,28 @@ def translate(translation_dict, terms):
 def ommit(opened_file,  targets_1, targets_2, attributes_1, attributes_2,test_number ):
     opened_file.writelines("Test Number: " + str(test_number) + "\n")
     opened_file.write("TI"+ "\t")
+    opened_file.write("\RL{")
     for i in targets_1:
-        opened_file.write(i +"\t")
+        opened_file.write( i +u"،" +" ")
+    opened_file.write("}")
     opened_file.write("\n")
     opened_file.write("T2" + "\t")
+    opened_file.write("\RL{")
     for i in targets_2:
-        opened_file.write(i + "\t")
+        opened_file.write( i +u"،" +" ")
+    opened_file.write("}")
     opened_file.write("\n")
     opened_file.write("A1" + "\t")
+    opened_file.write("\RL{")
     for i in attributes_1:
-        opened_file.write(i + "\t")
+        opened_file.write( i +u"،" +" ")
+    opened_file.write("}")
     opened_file.write("\n")
     opened_file.write("A2" + "\t")
+    opened_file.write("\RL{")
     for i in attributes_2:
-        opened_file.write(i + "\t")
+        opened_file.write( i +u"،" +" ")
+    opened_file.write("}")
     opened_file.write("\n")
 
 for test_number in range(1,11):

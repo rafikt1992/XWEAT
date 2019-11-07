@@ -1,50 +1,50 @@
 Test Number: 1
-TI	الآذريون	بنفسجي	البتونيا	خشخاش	توليب	السحلب	أرجواني	نفل	الزينية	صفير	الفاوانيا	الجريس	زعفران	نرجس	زنبق	شجرة المغنولية	زهرة الثالوث	أزهار النجمية	gladiola	قزحية	زهرة	أزالية	قرنفل	أقحوان	عشب الحوذان	
-T2		نحلة	عنكبوت	ذبابة سوداء	بعوض	حشرة الفراش	سوسة الفاكهة	يرقة	حريش	يعسوب	عنكبوت ذئبي	ناموس	خنفساء	نمل أبيض	برغوث	كريكيت	يطير	صرصور	جراد	دبور	ذبابة الخيل	نملة	العتة	
-A1	شرف	لطيف	صادق	سلام	حب	يشجع	معجزة	محظوظ	جنة	هدية	قوس قزح	دبلوم	سرور	ضحك	محظوظة	سعيد	الماس	مخلص	مخلصة	صحة	صديق	عناق	عائلة	الجنة	عطلة	صديقة	شروق الشمس	حرية	
-A2	سجن	سرطان	حزن	الاعتداءات	رجس	تحطم	طلاق	فاسد	تلوث	موت	قيء	مأساة	سم	كارثة	حادث	غثيان	نتن	بشع	فقر	كراهية	قتل	سكرة	إساءة	
+TI	البتونيا	الفاوانيا	شجرة المغنولية	زهرة	صفير	عشب الحوذان	الآذريون	نفل	خشخاش	gladiola	قرنفل	السحلب	توليب	أزهار النجمية	زنبق	زعفران	بنفسجي	الزينية	زهرة الثالوث	الجريس	أرجواني	نرجس	أقحوان	قزحية	أزالية	
+T2	حريش	صرصور	سوسة الفاكهة	نملة	نحلة	العتة	كريكيت	عنكبوت ذئبي	خنفساء	ناموس	حشرة الفراش	دبور	ذبابة الخيل	ذبابة سوداء	بعوض	جراد	عنكبوت	برغوث	يرقة	يطير	يعسوب	نمل أبيض	
+A1	جنة	ضحك	دبلوم	مخلص	مخلصة	صادق	حرية	سرور	سلام	صحة	هدية	عناق	يشجع	معجزة	صديق	شرف	الجنة	عائلة	محظوظ	الماس	شروق الشمس	سعيد	محظوظة	لطيف	قوس قزح	صديقة	عطلة	حب	
+A2	إساءة	كراهية	الاعتداءات	سرطان	قيء	تحطم	كارثة	نتن	حادث	سكرة	قتل	موت	تلوث	سم	فاسد	طلاق	غثيان	رجس	مأساة	سجن	بشع	حزن	فقر	
 Test Number: 2
-TI	قيثارة	عود	جرس	القيثارة	توبا	بوق	الباسون	الترومبون	طبل	كمان	هارمونيكا	مندولين	مزمار	مزمار القربة	بيانو	غيتار	ساكسفون	بونغو	البانجو	تشيلو	
-T2		شفرة	خزان	مسدس	قنبلة	فأس	مقلاع	سوط	رمح	بندقية	صاروخ	سهم	سكين	بندقية الصيد	مدفع	النادي	قنبلة يدوية	خنجر	ديناميت	غاز مسيل للدموع	سيف	صولجان	سلاح ناري	
-A1	شرف	لطيف	صادق	سلام	حب	يشجع	معجزة	محظوظ	جنة	هدية	قوس قزح	دبلوم	سرور	ضحك	محظوظة	سعيد	الماس	مخلص	مخلصة	صحة	صديق	عناق	عائلة	الجنة	عطلة	صديقة	شروق الشمس	حرية	
-A2	سجن	سرطان	حزن	الاعتداءات	رجس	تحطم	طلاق	فاسد	تلوث	موت	قيء	مأساة	سم	كارثة	حادث	غثيان	نتن	بشع	فقر	كراهية	قتل	سكرة	إساءة	
+TI	ساكسفون	بيانو	مندولين	مزمار	كمان	عود	تشيلو	توبا	مزمار القربة	طبل	القيثارة	الباسون	جرس	بونغو	بوق	البانجو	هارمونيكا	قيثارة	غيتار	الترومبون	
+T2	سوط	بندقية	صاروخ	فأس	غاز مسيل للدموع	خنجر	النادي	بندقية الصيد	سكين	سيف	خزان	مدفع	مسدس	ديناميت	صولجان	شفرة	سهم	رمح	قنبلة	مقلاع	قنبلة يدوية	سلاح ناري	
+A1	جنة	ضحك	دبلوم	مخلص	مخلصة	صادق	حرية	سرور	سلام	صحة	هدية	عناق	يشجع	معجزة	صديق	شرف	الجنة	عائلة	محظوظ	الماس	شروق الشمس	سعيد	محظوظة	لطيف	قوس قزح	صديقة	عطلة	حب	
+A2	إساءة	كراهية	الاعتداءات	سرطان	قيء	تحطم	كارثة	نتن	حادث	سكرة	قتل	موت	تلوث	سم	فاسد	طلاق	غثيان	رجس	مأساة	سجن	بشع	حزن	فقر	
 Test Number: 3
-TI	Matthew	Shannon	Josh	Frank	Peggy	Rachel	Stephen	Nancy	Fred	Ryan	Andrew	Emily	Jonathan	Megan	Roger	Bobbie-Sue	Sara	Katie	Adam	Paul	Melanie	Chip	Sue-Ellen	Courtney	Justin	Alan	Betsy	Ellen	Jed	Brandon	Kristin	Amber	Meredith	Wendy	Stephanie	Crystal	Lauren	Ian	Brad	Heather	Colleen	Donna	Greg	Harry	Hank	Todd	Wilbur	Peter	Jack	Amanda	
-T2	Lashelle	Tyree	Tawanda	Malik	Marcellus	Torrance	Yolanda	Tanisha	Lashandra	Yvette	Everol	Tameisha	Shavonn	Rashaun	Wardell	Latoya	Malika	Darnell	Shanise	Deion	Lamar	Terryl	Tashika	Temeka	Nichelle	Latisha	Lakisha	Jamel	Latonya	Ebony	Alonzo	Lamont	Terrence	Shereen	Shaniqua	Tia	Jerome	Lavon	Lerone	Rasaan	Aiesha	Leroy	Jasmine	Tyrone	Alphonse	Theo	Percell	Teretha	Sharise	Lionel	
-A1	شرف	لطيف	صادق	سلام	حب	يشجع	معجزة	محظوظ	جنة	هدية	قوس قزح	دبلوم	سرور	ضحك	محظوظة	سعيد	الماس	مخلص	مخلصة	صحة	صديق	عناق	عائلة	الجنة	عطلة	صديقة	شروق الشمس	حرية	
-A2	سجن	سرطان	قنبلة	حزن	الاعتداءات	رجس	تحطم	طلاق	شر	فاسد	تلوث	موت	قيء	مأساة	سم	كارثة	حادث	غثيان	نتن	بشع	فقر	كراهية	قتل	إساءة	
+TI	Peggy	Wendy	Katie	Amanda	Roger	Amber	Betsy	Rachel	Donna	Hank	Sara	Chip	Megan	Alan	Adam	Harry	Stephen	Wilbur	Paul	Frank	Justin	Ian	Fred	Josh	Ryan	Nancy	Todd	Brad	Courtney	Kristin	Bobbie-Sue	Melanie	Jed	Stephanie	Heather	Meredith	Brandon	Colleen	Shannon	Crystal	Greg	Lauren	Peter	Jonathan	Ellen	Emily	Sue-Ellen	Andrew	Jack	Matthew	
+T2	Lerone	Malika	Aiesha	Shavonn	Lavon	Shaniqua	Lakisha	Marcellus	Latoya	Wardell	Rasaan	Terrence	Tyree	Tyrone	Jasmine	Ebony	Everol	Shereen	Alphonse	Terryl	Latonya	Tameisha	Leroy	Nichelle	Tanisha	Tia	Malik	Lamar	Jerome	Darnell	Lashelle	Percell	Yvette	Temeka	Lionel	Teretha	Tawanda	Theo	Lamont	Jamel	Lashandra	Tashika	Shanise	Torrance	Rashaun	Latisha	Alonzo	Deion	Sharise	Yolanda	
+A1	جنة	ضحك	دبلوم	مخلص	مخلصة	صادق	حرية	سرور	سلام	صحة	هدية	عناق	يشجع	معجزة	صديق	شرف	الجنة	عائلة	محظوظ	الماس	شروق الشمس	سعيد	محظوظة	لطيف	قوس قزح	صديقة	عطلة	حب	
+A2	إساءة	كراهية	الاعتداءات	سرطان	قيء	تحطم	كارثة	نتن	حادث	قتل	موت	تلوث	سم	فاسد	قنبلة	طلاق	غثيان	رجس	مأساة	سجن	شر	بشع	حزن	فقر	
 Test Number: 4
-TI	Brad	Kristen	Matthew	Sarah	Jay	Allison	Laurie	Greg	Carrie	Brendan	Geoffrey	Jill	Meredith	Neil	Anne	Emily	Brett	Todd	
-T2	Tremayne	Lakisha	Latonya	Ebony	Latoya	Keisha	Tyrone	Darnell	Kenya	Tamika	Tanisha	Jamal	Kareem	Jermaine	Rasheed	Aisha	Leroy	Hakim	
-A1	شرف	لطيف	صادق	سلام	حب	يشجع	معجزة	محظوظ	جنة	هدية	قوس قزح	دبلوم	سرور	ضحك	محظوظة	سعيد	الماس	مخلص	مخلصة	صحة	صديق	عناق	عائلة	الجنة	عطلة	صديقة	شروق الشمس	حرية	
-A2	سجن	سرطان	قنبلة	حزن	الاعتداءات	رجس	تحطم	طلاق	شر	فاسد	تلوث	موت	قيء	مأساة	سم	كارثة	حادث	غثيان	نتن	بشع	فقر	كراهية	قتل	إساءة	
+TI	Greg	Geoffrey	Neil	Brendan	Meredith	Anne	Brett	Jill	Jay	Allison	Kristen	Sarah	Carrie	Emily	Todd	Matthew	Laurie	Brad	
+T2	Keisha	Tamika	Rasheed	Ebony	Latoya	Lakisha	Jamal	Kareem	Hakim	Jermaine	Darnell	Leroy	Aisha	Tremayne	Latonya	Kenya	Tyrone	Tanisha	
+A1	جنة	ضحك	دبلوم	مخلص	مخلصة	صادق	حرية	سرور	سلام	صحة	هدية	عناق	يشجع	معجزة	صديق	شرف	الجنة	عائلة	محظوظ	الماس	شروق الشمس	سعيد	محظوظة	لطيف	قوس قزح	صديقة	عطلة	حب	
+A2	إساءة	كراهية	الاعتداءات	سرطان	قيء	تحطم	كارثة	نتن	حادث	قتل	موت	تلوث	سم	فاسد	قنبلة	طلاق	غثيان	رجس	مأساة	سجن	شر	بشع	حزن	فقر	
 Test Number: 5
-TI	Brad	Kristen	Matthew	Sarah	Jay	Allison	Laurie	Greg	Carrie	Brendan	Geoffrey	Jill	Meredith	Neil	Anne	Emily	Brett	Todd	
-T2	Tremayne	Lakisha	Latonya	Ebony	Latoya	Keisha	Tyrone	Darnell	Kenya	Tamika	Tanisha	Jamal	Kareem	Jermaine	Rasheed	Aisha	Leroy	Hakim	
-A1	صديقة	صديق	رائع	سرور	ضحك	فرح	سلام	سعيد	حب	
-A2	مقرف	سيئ	رهيب	شر	فشل	حرب	سكرة	
+TI	Greg	Geoffrey	Neil	Brendan	Meredith	Anne	Brett	Jill	Jay	Allison	Kristen	Sarah	Carrie	Emily	Todd	Matthew	Laurie	Brad	
+T2	Keisha	Tamika	Rasheed	Ebony	Latoya	Lakisha	Jamal	Kareem	Hakim	Jermaine	Darnell	Leroy	Aisha	Tremayne	Latonya	Kenya	Tyrone	Tanisha	
+A1	رائع	سلام	فرح	صديقة	ضحك	سعيد	صديق	حب	سرور	
+A2	فشل	حرب	سيئ	رهيب	شر	سكرة	مقرف	
 Test Number: 6
-TI	Paul	Greg	Bill	Jeff	Mike	John	Kevin	Steve	
-T2	Lisa	Diana	Sarah	Ann	Kate	Donna	Joan	Amy	
-A1	إدارة	مؤسسة	تنفيذي	محترفين	أعمال	مكتب	راتب	مهنة	
-A2	منزل	أقارب	زواج	أبناء عم	الآباء	حفل زواج	عائلة	بنات عم	الأطفال	
+TI	Greg	Kevin	Mike	John	Paul	Bill	Jeff	Steve	
+T2	Donna	Diana	Kate	Joan	Sarah	Ann	Lisa	Amy	
+A1	مكتب	مؤسسة	راتب	أعمال	مهنة	إدارة	محترفين	تنفيذي	
+A2	منزل	زواج	الأطفال	عائلة	بنات عم	حفل زواج	الآباء	أبناء عم	أقارب	
 Test Number: 7
-TI	معادلات	الرياضيات	الجبر	الهندسة	تحليل	إضافة	أعداد	حساب	
-T2	الشعر	رقص	فن	الأدب	رواية	سمفونية	نحت	دراما	
-A1	له	ابن	صبي	الذكر	شقيق	رجل	هو	
-A2	ابنة	أخت	نساء	أنثى	فتاة	هي	لها	
+TI	الهندسة	الرياضيات	معادلات	تحليل	حساب	إضافة	أعداد	الجبر	
+T2	نحت	رواية	رقص	سمفونية	الأدب	دراما	الشعر	فن	
+A1	رجل	صبي	الذكر	ابن	له	هو	شقيق	
+A2	هي	فتاة	ابنة	لها	نساء	أنثى	أخت	
 Test Number: 8
-TI	كيمياء	علم	Einstein	تقنية	تجربة	فيزيائية	فلك	NASA	
-T2	Shakespeare	الشعر	رقص	فن	الأدب	رواية	سمفونية	دراما	
-A1	له	ابن	جد	عم	هو	الآب	شقيق	
-A2	ابنة	أخت	أم	هي	لها	جدة	عمة	
+TI	NASA	تقنية	علم	فلك	Einstein	كيمياء	تجربة	فيزيائية	
+T2	رواية	رقص	سمفونية	الأدب	دراما	الشعر	Shakespeare	فن	
+A1	عم	ابن	شقيق	له	هو	جد	الآب	
+A2	جدة	هي	ابنة	لها	عمة	أم	أخت	
 Test Number: 9
-TI	مدمع	ميئوس منه	حزين	ميئوس منها	مكتئب	كئيب	تعيس	
-T2	مرض	إنفلونزا	فيروس	سرطان	
-A1	نبذة	عرضي	عابر	متغير	المدى القصير	غير مستقر	زائل	
-A2	ثابت	مزمن	مستقر	إلى الأبد	دائما	مستمر	فترة طويلة	
+TI	تعيس	ميئوس منه	مكتئب	حزين	كئيب	مدمع	ميئوس منها	
+T2	سرطان	إنفلونزا	مرض	فيروس	
+A1	غير مستقر	زائل	عابر	المدى القصير	عرضي	متغير	نبذة	
+A2	مستقر	مستمر	إلى الأبد	دائما	فترة طويلة	ثابت	مزمن	
 Test Number: 10
-TI	Tiffany	Brad	Michelle	Cindy	Eric	Joey	Kristy	Billy	
-T2	Mortimer	Wilbert	Agnes	Bernice	Cecil	Gertrude	Edgar	Ethel	
-A1	صديقة	صديق	رائع	سرور	ضحك	فرح	سلام	سعيد	حب	
-A2	مقرف	سيئ	رهيب	شر	فشل	حرب	سكرة	
+TI	Joey	Billy	Cindy	Kristy	Eric	Tiffany	Michelle	Brad	
+T2	Wilbert	Gertrude	Agnes	Mortimer	Bernice	Edgar	Ethel	Cecil	
+A1	رائع	سلام	فرح	صديقة	ضحك	سعيد	صديق	حب	سرور	
+A2	فشل	حرب	سيئ	رهيب	شر	سكرة	مقرف	

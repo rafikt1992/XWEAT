@@ -21,7 +21,7 @@ war,حرب,
 Heather,إكليل الجبل,
 mace,صولجان,
 engineer,مهندس,مهندسة
-agony,سكرة,
+agony,عذاب,
 therapist,معالج,معالجة
 specialist,متخصص,متخصصة
 ,,
@@ -141,7 +141,7 @@ gnat,ناموس,
 mechanic,الميكانيك,
 forever,إلى الأبد,
 centipede,حريش,
-disease,مرض,
+disease,داء,
 ,,
 boy,صبي,
 counselor,مستشار,مستشارة
@@ -341,7 +341,7 @@ poverty,فقر,
 equations,معادلات,
 programmer,مبرمج,مبرمجة
 impermanent,زائل,
-male,الذكر,
+male,ذكر,
 ,,
 wasp,دبور,
 science,علم,
@@ -383,10 +383,10 @@ hyacinth,صفير,
 ,,
 ,,
 horn,بوق,
-ant,,نملة
+ant,نملة,
 cancer,سرطان,
 tarantula,عنكبوت ذئبي,
-blade,,شفرة
+blade,شفرة,
 algebra,الجبر,
 viola,كمان,
 physician,الطبيب المعالج,الطبيبة المعالجة
