@@ -2,7 +2,7 @@ import os
 import codecs
 import pandas as pd
 
-# version: 1.7
+# version: 1.7.1
 
 report = {
     "id": [],
@@ -12,7 +12,7 @@ report = {
     "data_set_source": [],
     "language/dialect": [],
     "embedding_method": [],
-    "tocken_type": [],
+    "token_type": [],
     "vector_size": [],
     "pretrained/trained": [],
     "d": [],
@@ -24,16 +24,13 @@ report = {
     "list_of_missing_words": [],
 
 }
-data_set_source = "liptiz_news"
-tocken_type = "bigram"
-vector_size = "300"
-language = "MSA"
-embedding_method = "cbow"
-trained = "myself"
+#tocken_type = "bigram" todo method
+#language = "MSA" #:todo: method
+trained = "aravec"
 result_tuple = []
-
+corpus_size = ""
 file_list = os.listdir('./results')  # change this directory
-
+year = ""
 
 def get_list_of_missing_words(file_name):
     '''return list of words'''
@@ -113,15 +110,42 @@ def get_permutation_number(file_name):
             log_list.append(i.strip())
     return log_list[-3]
 
+def get_embedding_method(file_name):
+    file_name = file_name.strip().split("_")
+    embeddin_method = file_name[2]
+    return embeddin_method
+
+def get_data_source(file_name):
+    file_name = file_name.strip().split("_")
+    embeddin_method = file_name[4]
+    return embeddin_method
+
+def get_vector_size(file_name):
+    file_name = file_name.strip().split("_")
+    vector_size = file_name[3]
+    return vector_size
+
+def get_token_type(file_name):
+    file_name = file_name.strip().split("_")
+    token_type = file_name[1]
+    return token_type
+
+def get_language(file_name):
+    file_name = file_name.strip().split("_")
+    file_name = file_name[4].replace(".p", "")
+    if file_name == "twitter":
+        language = "mixed"
+    elif file_name == "wiki":
+        language = "MSA"
+    else:
+        language = "web"
+    return language
 
 for file_name in file_list:
     report['id'].append(file_name.replace(".log", ""))
     report["test_number"].append(get_test_number(file_name))
-    report["data_set_source"].append(data_set_source)
-    report['language/dialect'].append(language)
-    report['embedding_method'].append(embedding_method)
-    report['tocken_type'].append(tocken_type)
-    report['vector_size'].append(vector_size)
+    report["data_set_source"].append(get_data_source(file_name).replace(".p", ""))
+    report['vector_size'].append(get_vector_size(file_name))
     report['pretrained/trained'].append(trained)
     d, e, p = (get_result_values(file_name))
     report['d'].append(str(d))
@@ -130,9 +154,13 @@ for file_name in file_list:
     report['number_of_words'].append(len(get_list_of_missing_words(file_name)))
     report['percent'].append(percent_of_missing_words(file_name))
     report['list_of_missing_words'].append(get_list_of_missing_words(file_name))
-    report['year'].append(get_year(file_name))
-    report["corpus_size"].append(get_corpus_size(file_name))
+    report['year'].append(year)
+    report["corpus_size"].append(corpus_size)
     report["number_of_permutation"].append(get_permutation_number(file_name))
+    report["embedding_method"].append(get_embedding_method(file_name))
+    report["token_type"].append(get_token_type(file_name))
+    report["language/dialect"].append((get_language(file_name)))
+
 
 df = pd.DataFrame.from_dict(report)
 df.to_csv("reprot_with_permutation.csv", sep=",", index=False)
