@@ -88,6 +88,8 @@ def semEval(embedding_path,output):
             sts_1_score = 0.0
             sts_2_score = 0.0
 
+
+
             for token in sts_1:
                 token = clean_arabic_str(token).replace(" ", "_") #clean the token to match the training format
                 token = token.replace(".", "")
@@ -101,6 +103,7 @@ def semEval(embedding_path,output):
                     #sts_1_score = np.divide(sum_embedding_2, len(sts_2))  # not needed anymore
             for token in sts_2:
                 token = clean_arabic_str(token).replace(" ", "_")
+                token = token.replace(".", "")
                 try:
                     embedding_dict[token]
                     word_embedding = np.array(embedding_dict[token])

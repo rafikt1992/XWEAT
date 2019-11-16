@@ -64,11 +64,10 @@ def get_test_number(file_name):
     ''' return test number from file name'''
 
     file_name = file_name.strip().split("_")
-    test_number = file_name[4]
+    test_number = file_name[5]
     test_number = test_number[0]
 
     return test_number
-
 
 def percent_of_missing_words(file_name):
     dictionary = {
