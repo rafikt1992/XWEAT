@@ -2,7 +2,46 @@ import argparse
 import numpy as np
 import os
 import codecs
-#import utils
+import utils
+import logging
+import pickle
+from sklearn.cluster import KMeans
+from scipy import stats
+import random
+#import pandas
+file_list = os.listdir('data/vec')
+results = {
+    "id" : [],
+    "kmeans": [],
+    "bat" : [],
+    "ect_correlation" : [],
+    "ect_p-value" : []
+
+}
+lang = "ar"
+def load_vocab_goran(path):  #load pickle files
+    return pickle.load(open(path, "rb"))
+
+
+
+def translate(translation_dict, terms):
+    translation = []
+    for t in terms:
+        if t in translation_dict or t.lower() in translation_dict:
+            if t.lower() in translation_dict:
+                male, female = translation_dict[t.lower()]
+            elif t in translation_dict:
+                male, female = translation_dict[t]
+            if female is None or female is '':
+                translation.append(male)
+            else:
+                translation.append(male)
+                translation.append(female)
+        else:
+            translation.append(t)
+    translation = list(set(translation))
+    return translation
+
 def embedding_coherence_test(vecs, vocab, target_1, target_2, attributes):
   """
   Explicit bias evaluation
@@ -160,7 +199,7 @@ def bias_analogy_test(vecs, vocab, target_1, target_2, attributes_1, attributes_
 
     return sum(biased) / sum(totals)
 
-def weat_1(self):
+def weat_1():
     """
 WEAT 1 (universally accepted): Targets 1=Flowers, Targets 2=Insects, Attributes 1=pleasant, Attributes 2=unpleasant
 :return: targets_1, targets_2, attributes_1, attributes_2
@@ -189,7 +228,7 @@ WEAT 1 (universally accepted): Targets 1=Flowers, Targets 2=Insects, Attributes 
     return targets_1, targets_2, attributes_1, attributes_2
 
     # WEAT 2: Target 1=Musical instruments, Target 2= Weapons, Attributes 1: pleasant, Attributes 2=unpleasant
-def weat_2(self):
+def weat_2():
     targets_1 = ["bagpipe", "cello", "guitar", "lute", "trombone", "banjo", "clarinet", "harmonica", "mandolin",
                  "trumpet", "bassoon", "drum", "harp", "oboe", "tuba", "bell", "fiddle", "harpsichord", "piano",
                  "viola", "bongo",
@@ -214,7 +253,7 @@ def weat_2(self):
 
 
     # sex - math
-def weat_7(self):
+def weat_7():
     targets_1 = ["math", "algebra", "geometry", "calculus", "equations", "computation", "numbers", "addition"]
     targets_2 = ["poetry", "art", "dance", "literature", "novel", "symphony", "drama", "sculpture"]
     attributes_1 = ["male", "man", "boy", "brother", "he", "him", "his", "son"]
@@ -222,7 +261,7 @@ def weat_7(self):
     return targets_1, targets_2, attributes_1, attributes_2
 
     # sex - science
-def weat_8(self):
+def weat_8():
     targets_1 = ["science", "technology", "physics", "chemistry", "Einstein", "NASA", "experiment", "astronomy"]
     targets_2 = ["poetry", "art", "Shakespeare", "dance", "literature", "novel", "symphony", "drama"]
     attributes_1 = ["brother", "father", "uncle", "grandfather", "son", "he", "his", "him"]
@@ -230,7 +269,7 @@ def weat_8(self):
     return targets_1, targets_2, attributes_1, attributes_2
 
     # desease - uncontrollability
-def weat_9(self):
+def weat_9():
     targets_1 = ["sad", "hopeless", "gloomy", "tearful", "miserable", "depressed"]
     targets_2 = ["sick", "illness", "influenza", "disease", "virus", "cancer"]
     # in w2v experiments, the've replaced short-term with short
@@ -253,43 +292,50 @@ def load_embedding_vocab_vectors(path):
                 nums = np.array([float(p) for p in parts[1:]])
                 vector.append(nums)
                 vocab[word] = index
-                embbedding_dict[word] = nums
+                #embbedding_dict[word] = nums
 
             except Exception as e:
                 print(line)
                 continue
     vector = np.array(vector)
-    return embbedding_dict, vocab, vector #
+    return  vocab, vector #embbedding_dict
 
 
+test_list = [1,2,7,8,9]
 
-# def main():
-#     def boolean_string(s):
-#         if s not in {'False', 'True', 'false', 'true'}:
-#             raise ValueError('Not a valid boolean string')
-#         return s == 'True' or s == 'true'
-#
-#
-#
-#     parser = argparse.ArgumentParser(description="Running XWEAT")
-#     parser.add_argument("--test_number", type=int, help="Number of the weat test to run", required=False)
-#     parser.add_argument("--permutation_number", type=int, default=None,
-#                         help="Number of permutations (otherwise all will be run)", required=False)
-#     parser.add_argument("--output_file", type=str, default=None, help="File to store the results)", required=True)
-#     parser.add_argument("--lower", type=boolean_string, default=False, help="Whether to lower the vocab", required=True)
-#     parser.add_argument("--similarity_type", type=str, default="cosine", help="Which similarity function to use",
-#                         required=False)
-#     parser.add_argument("--embedding_vocab", type=str, help="Vocab of the embeddings")
-#     parser.add_argument("--embedding_vectors", type=str, help="Vectors of the embeddings")
-#     parser.add_argument("--use_glove", type=boolean_string, default=False, help="Use glove")
-#     parser.add_argument("--postspec", type=boolean_string, default=False, help="Use postspecialized fasttext")
-#     parser.add_argument("--is_vec_format", type=boolean_string, default=False,
-#                         help="Whether embeddings are in vec format")
-#     parser.add_argument("--embeddings", type=str, help="Vectors and vocab of the embeddings")
-#     parser.add_argument("--lang", type=str, default="en", help="Language to test")
-#     args = parser.parse_args()
-#
-#
+for embedding in file_list:
+    vocab, vector, = load_embedding_vocab_vectors("data/vec/ara_news_2007_300K-sentencesCleaned.txt.vec")
+    for test_number in test_list:
+        if test_number == 1:
+            targets_1, targets_2, attributes_1, attributes_2 = weat_1()
+        elif test_number == 2:
+            targets_1, targets_2, attributes_1, attributes_2 = weat_2()
+        elif test_number == 7:
+            targets_1, targets_2, attributes_1, attributes_2 = weat_7()
+        elif test_number == 8:
+            targets_1, targets_2, attributes_1, attributes_2 = weat_8()
+        elif test_number == 9:
+            targets_1, targets_2, attributes_1, attributes_2 = weat_9()
+        else:
+            raise ValueError("Only WEAT 1 to 10 are supported")
+
+        if lang != "en":
+            logging.info("Translating terms from en to %s", lang)
+            translation_dict = load_vocab_goran("/home/rtakiedd/projects/XWEAT/data/vocab_dict_en_ar.p") #todo: change back to ./data
+            targets_1 = translate(translation_dict, targets_1)
+            targets_2 = translate(translation_dict, targets_2)
+            attributes_1 = translate(translation_dict, attributes_1)
+            attributes_2 = translate(translation_dict, attributes_2)
 
 
-embedding_dict, vocab, vector, = load_embedding_vocab_vectors("data/vec/ara_wikipedia_2012_100K-cbow.vec")
+        ect = embedding_coherence_test(vector,vocab,targets_1,targets_2,attributes_1+attributes_2)
+        kmns = eval_k_means(targets_1,targets_2,vector,vocab)
+        bat = bias_analogy_test(vector,vocab,targets_1,targets_2,attributes_1,attributes_2)
+        results["id"].append(str(embedding).replace("-sentencesCleaned.txt.vec",""))
+        results["kmeans"].append(str(kmns))
+        results["bat"].append(str(bat))
+        results["ect_correlation"].append(str(ect[0]))
+        results["ect_p-value"].append(str(ect[1]))
+
+        print(bat)
+
