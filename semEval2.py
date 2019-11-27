@@ -138,7 +138,9 @@ def build_mattrix(sts_1, sts_2, embedding_dict): #:todo: figure out how to delet
 
 def averaged_sentence_representaion(sts_1_embeddings, sts_2_embeddings):
 
-    ''' :returns sts_1_embeddings list of embeddings representation of all the sentences 1 normalized by the average
+    '''
+    creates one embedding per sentence
+    :returns sts_1_embeddings list of embeddings representation of all the sentences 1 normalized by the average
                                     length of the founded words
                 sts_2_embeddings: same as above except for the second part of the sentence
     '''
@@ -175,7 +177,7 @@ def compute_cosine(sentence_reprentation_1, sentence_representation_2):
     return result
 
 def compute_correlation(result, gold_standard):
-
+    gold_standard = np.delete(gold_standard, 66)
     correlation = np.corrcoef(gold_standard, result)  #
     #np.savetxt("eval/" + output + "Eval", correlation, fmt='%.18e', header="")
     return correlation
@@ -278,8 +280,8 @@ def run(embedding_path):
     pass
 
 
-listofembedidngs = ["ara_news_2008_1M-sentencesCleaned.txt.vec"]
-embedding_path = "data/vec/ara_news_2008_1M-sentencesCleaned.txt.vec"
+#listofembedidngs = ["ara_news_2008_1M-sentencesCleaned.txt.vec"]
+embedding_path = "data/vec/years_concatinated.vec"
 embedding_dict = load_embedding(embedding_path)
 
 
@@ -290,7 +292,7 @@ sts_1_embeddings, sts_2_embeddings = build_mattrix(sts_1, sts_2, embedding_dict)
 result = compute_cosine( sts_1_embeddings, sts_2_embeddings)
 
 result = compute_correlation(result, gold_standard)
-print(result)
+
 
 
 

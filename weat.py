@@ -59,7 +59,7 @@ class XWEAT(object):
                 continue
         return output
 
-    def _build_embedding_matrix(self): #we through everything we dont need away
+    def _build_embedding_matrix(self): # Create a matr
         self.embedding_matrix = []
         for term, index in self.vocab.items():
             if term in self.embd_dict:
@@ -600,7 +600,7 @@ def main():
     parser.add_argument("--similarity_type", type=str, default="cosine", help="Which similarity function to use",
                         required=False)
     parser.add_argument("--embedding_vocab", type=str, help="Vocab of the embeddings")
-    parser.add_argument("--embedding_vectors", type=str, help="Vectors of the embeddings, use pickleTrue as a path to load from a pickle, name your pickle file embedding_dict.py and add it to data folder")
+    parser.add_argument("--embedding_vectors", type=str, help="Vectors of the embeddings")
     parser.add_argument("--use_glove", type=boolean_string, default=False, help="Use glove")
     parser.add_argument("--postspec", type=boolean_string, default=False, help="Use postspecialized fasttext")
     parser.add_argument("--is_vec_format", type=boolean_string, default=False,

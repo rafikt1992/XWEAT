@@ -25,6 +25,7 @@ def load_embedding(path):
                 continue
     return embbedding_dict #
 
+
 def clean_arabic_str(text):
     '''
     this method clean strings of arabic, remove tashkeel, and replace double letters and unify ta2 marbuta and ha2
@@ -113,7 +114,7 @@ def semEval(embedding_path,output):
                 except KeyError as e:
                     print("not found:" + token)
             if number_of_founded_words > 0:
-                sentence_1_representation = np.divide(sum_embedding_1, number_of_founded_words)  # not needed anymore
+                sentence_1_representation = np.divide(sum_embedding_1, number_of_founded_words)
             elif number_of_founded_words == 0:
                 sentence_1_representation = np.divide(sum_embedding_1, 1)
 
